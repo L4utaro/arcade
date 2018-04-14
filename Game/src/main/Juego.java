@@ -1,15 +1,23 @@
 package main;
 
-import Dibujador.VentanaJuego;
+import java.awt.Canvas;
 
-public class GameController implements Runnable{
+import control.Teclado;
+import dibujador.VentanaJuego;
+
+public class Juego extends Canvas implements Runnable{
 	private static VentanaJuego ventanaJuego;
 	private static volatile Thread thread;		//agregamos el volatile porque estamos usando 2 threads
 	private static boolean enFuncionamiento = false;
 	private static int aps = 0; //actualizaciones por segundo
 	private static int fps = 0; //frames por segundo
 	
-	public GameController(){
+	private static Teclado teclado;
+	
+	public Juego(){
+		teclado = new Teclado();
+		addKeyListener(teclado);
+		
 		ventanaJuego = new VentanaJuego();
 	}
 	//synchronized permite que no se puedan ejecutar al mismo tiempo
@@ -29,6 +37,19 @@ public class GameController implements Runnable{
 	}
 	
 	public void actualizar(){
+		teclado.actualizar();
+		if(teclado.w) {
+			System.out.println("arriba");
+		}
+		if(teclado.s) {
+			System.out.println("abajo");
+		}
+		if(teclado.a) {
+			System.out.println("izquierda");
+		}
+		if(teclado.d) {
+			System.out.println("derecha");
+		}
 		aps++;
 	}
 	
@@ -46,6 +67,9 @@ public class GameController implements Runnable{
 		
 		double tiempoTranscurrido;
 		double delta = 0;
+		
+		requestFocus();//saltea tener que hacer el clik en pantalla. (osea, podes tocar teclas cuando se inicia)
+		
 		while(enFuncionamiento){
 			final long inicioBucle = System.nanoTime();		//tomamos la cantidad exacta de nanosegundos cuando comienza el bucle
 			tiempoTranscurrido = inicioBucle - referenciaActualizacion;//tomamos el tiempo transcurrido de cada ciclo
