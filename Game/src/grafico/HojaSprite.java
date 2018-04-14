@@ -18,6 +18,7 @@ public class HojaSprite {
 		BufferedImage imagen;
 		try {
 			imagen = ImageIO.read (HojaSprite.class.getResource(ruta));
+			imagen.getRGB(0, 0, ancho, alto, pixeles, 0 ,ancho);
 		} catch (IOException e) {
 
 		}

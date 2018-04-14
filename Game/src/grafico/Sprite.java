@@ -14,7 +14,7 @@ public class Sprite {
 		this.x = columna * lado;
 		this.y = fila *lado;
 		this.hoja =hoja;
-		//emepzamos el buble por y, para ir dibujando de izquierda a derecha y luego hacia abajo
+		//emepzamos el bucle por y, para ir dibujando de izquierda a derecha y luego hacia abajo
 		for (int y=0; y < lado; y++) {
 			for (int x=0; x < lado; x++) {
 				pixeles[x+y*lado] = hoja.pixeles[(x+this.x) + (y+this.y) * hoja.getAncho()];

@@ -1,24 +1,44 @@
 package main;
 
+import java.awt.BorderLayout;
 import java.awt.Canvas;
+import java.awt.Dimension;
+
+import javax.swing.JFrame;
 
 import control.Teclado;
-import dibujador.VentanaJuego;
+//import dibujador.VentanaJuego;
 
 public class Juego extends Canvas implements Runnable{
-	private static VentanaJuego ventanaJuego;
+	//private static VentanaJuego ventanaJuego;
 	private static volatile Thread thread;		//agregamos el volatile porque estamos usando 2 threads
 	private static boolean enFuncionamiento = false;
 	private static int aps = 0; //actualizaciones por segundo
 	private static int fps = 0; //frames por segundo
-	
 	private static Teclado teclado;
 	
+	//ventanaJuego
+	private static final long serialVersionUID = 1L;
+	private static JFrame ventana;
+	//ventanaJuego
+	
 	public Juego(){
+		//ventanaJuego
+		setPreferredSize(new Dimension(Constantes.ANCHO, Constantes.ALTO));
+		ventana = new JFrame(Constantes.NOMBREJUEGO);
+		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ventana.setResizable(false);
+		ventana.setLayout(new BorderLayout());
+		ventana.add(this, BorderLayout.CENTER);
+		ventana.pack();
+		ventana.setLocationRelativeTo(null);
+		ventana.setVisible(true);
+		//ventanaJuego
+		
 		teclado = new Teclado();
 		addKeyListener(teclado);
-		
-		ventanaJuego = new VentanaJuego();
+		setFocusable(true);
+		//ventanaJuego = new VentanaJuego();
 	}
 	//synchronized permite que no se puedan ejecutar al mismo tiempo
 	public synchronized void iniciar(){

@@ -3,7 +3,7 @@ package control;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public final class Teclado implements KeyListener{
+public class Teclado implements KeyListener{
 	private final static int numeroTeclas = 120;
 	private final boolean [] teclas = new boolean[numeroTeclas];
 	
@@ -22,16 +22,15 @@ public final class Teclado implements KeyListener{
 	//HAY QUE ARREGLAR ESTA PARTE, NO HACE LAS ACCIONES DE DEBAJO
 	//teclas que se mantienen pulsada
 	public void keyPressed(KeyEvent e) {
-		System.out.println("s");
 		teclas[e.getKeyCode()] = true;		//pone en true la tecla pulsada
 	}
 	//teclas que se sueltan
 	public void keyReleased(KeyEvent e) {
-		System.out.println("ihug");
 		teclas[e.getKeyCode()] = false;		//pone en false tecla soltada
 		
 	}
 	//pulsar y soltar
+	@Override
 	public void keyTyped(KeyEvent e) {
 	}
 }
