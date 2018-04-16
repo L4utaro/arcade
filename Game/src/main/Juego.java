@@ -3,6 +3,7 @@ package main;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -70,6 +71,17 @@ public class Juego extends Canvas implements Runnable {
 
 	public void actualizar() {
 		teclado.actualizar();
+		//mueve la pantalla para centrar el personaje
+		if(teclado.arriba) {
+			y++;
+		}if(teclado.abajo) {
+			y--;
+		}if(teclado.izquierda) {
+			x++;
+		}if(teclado.derecha) {
+			x--;
+		}
+		
 		aps++;
 	}
 
@@ -79,6 +91,21 @@ public class Juego extends Canvas implements Runnable {
 			createBufferStrategy(3);
 			return;
 		}
+		
+		pantalla.limpiar();
+		pantalla.mostrar(x, y);
+		
+		//tenemos que copiar el bluc for de la pantalla al bucle juego
+		//copiamos el array de pantalla.pixeles al pixeles del juego
+		System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
+		//graphics se va a encargar de dibujar las cosas que tenga estrategia.
+		Graphics g = estrategia.getDrawGraphics();
+		
+		g.drawImage(imagen, 0, 0,getWidth(), getHeight(), null);
+		g.dispose();
+		
+		estrategia.show();
+		
 		fps++;
 	}
 

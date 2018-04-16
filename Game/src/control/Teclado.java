@@ -7,17 +7,17 @@ public class Teclado implements KeyListener {
 	private final static int numeroTeclas = 120;
 	private final boolean[] teclas = new boolean[numeroTeclas];
 
-	public boolean w;
-	public boolean s;
-	public boolean a;
-	public boolean d;
+	public boolean arriba;
+	public boolean abajo;
+	public boolean izquierda;
+	public boolean derecha;
 	public boolean space;
 
 	public void actualizar() {
-		w = teclas[KeyEvent.VK_W]; // la tecla arriba equivale a pulsar W
-		s = teclas[KeyEvent.VK_S]; // la tecla arriba equivale a pulsar S
-		a = teclas[KeyEvent.VK_A]; // la tecla arriba equivale a pulsar A
-		d = teclas[KeyEvent.VK_D]; // la tecla arriba equivale a pulsar D
+		arriba = teclas[KeyEvent.VK_W]; // la tecla arriba equivale a pulsar W
+		abajo = teclas[KeyEvent.VK_S]; // la tecla arriba equivale a pulsar S
+		izquierda = teclas[KeyEvent.VK_A]; // la tecla arriba equivale a pulsar A
+		derecha = teclas[KeyEvent.VK_D]; // la tecla arriba equivale a pulsar D
 	}
 
 	// HAY QUE ARREGLAR ESTA PARTE, NO HACE LAS ACCIONES DE DEBAJO
