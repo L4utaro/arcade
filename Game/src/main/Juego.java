@@ -8,6 +8,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import control.Teclado;
@@ -23,10 +24,13 @@ public class Juego extends Canvas implements Runnable {
 	private static Teclado teclado;
 	private static int x = 0;
 	private static int y = 0;
+	private static String CONTADOR_APS = "";
+	private static String CONTADOR_FPS = "";
 	private static Pantalla pantalla;
 	private static BufferedImage imagen = new BufferedImage(Constantes.ANCHO, Constantes.ALTO,
 			BufferedImage.TYPE_INT_RGB);
 	private static int [] pixeles = ((DataBufferInt) imagen.getRaster().getDataBuffer()).getData();
+	private static final ImageIcon icono = new ImageIcon (Juego.class.getResource("/icono/icono.png"));
 	
 	// ventanaJuego
 	private static final long serialVersionUID = 1L;
@@ -39,6 +43,8 @@ public class Juego extends Canvas implements Runnable {
 		ventana = new JFrame(Constantes.NOMBREJUEGO);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setResizable(false);
+		ventana.setIconImage(icono.getImage());
+		ventana.setUndecorated(true);//ESTO SACA LOS BORDES DE LA PANTALLA, SI QUIEREN LO COMENTAN, NO PASA NADA
 		ventana.setLayout(new BorderLayout());
 		ventana.add(this, BorderLayout.CENTER);
 		ventana.pack();
@@ -81,7 +87,9 @@ public class Juego extends Canvas implements Runnable {
 		}if(teclado.derecha) {
 			x--;
 		}*/
-		
+		if(teclado.salir) {
+			System.exit(0);
+		}
 		aps++;
 	}
 
@@ -102,6 +110,8 @@ public class Juego extends Canvas implements Runnable {
 		Graphics g = estrategia.getDrawGraphics();
 		
 		g.drawImage(imagen, 0, 0,getWidth(), getHeight(), null);
+		g.drawString(CONTADOR_APS, 10, 20);
+		g.drawString(CONTADOR_FPS, 10, 35);
 		g.dispose();
 		
 		estrategia.show();
@@ -144,7 +154,8 @@ public class Juego extends Canvas implements Runnable {
 
 			if (System.nanoTime() - referenciaContador > NS_POR_SEGUNDO) {// esto hace que el contador se actualice cada
 																			// segundo.
-				System.out.println("APS: " + aps + " || FPS: " + fps);
+				CONTADOR_APS = "Aps: " + aps;
+				CONTADOR_FPS = "Fps: " + fps;
 				aps = 0;
 				fps = 0;
 				referenciaContador = System.nanoTime();
