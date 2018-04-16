@@ -72,7 +72,7 @@ public class Juego extends Canvas implements Runnable {
 	public void actualizar() {
 		teclado.actualizar();
 		//mueve la pantalla para centrar el personaje
-		if(teclado.arriba) {
+	/*	if(teclado.arriba) {
 			y++;
 		}if(teclado.abajo) {
 			y--;
@@ -80,7 +80,7 @@ public class Juego extends Canvas implements Runnable {
 			x++;
 		}if(teclado.derecha) {
 			x--;
-		}
+		}*/
 		
 		aps++;
 	}
