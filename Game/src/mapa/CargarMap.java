@@ -1,6 +1,4 @@
-package mapas;
-
-import mapa.MapaTiled;
+package mapa;
 
 public class CargarMap {
 	private MapaTiled mapa;

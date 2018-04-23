@@ -1,12 +1,13 @@
 package mapa;
 
 import java.awt.Point;
+
 import java.util.ArrayList;
 import java.util.List;
-import app.enums.TipoEstructura;
-import app.estructura.Estructura;
-import app.estructura.TipoDeEstructura;
-import app.modelo.ObjetoGrafico;
+import enums.TipoEstructura;
+import estructura.Estructura;
+import estructura.TipoDeEstructura;
+import modelo.ObjectGraphic;
 import util.CargadorRecursos;
 
 public class MapaTiled {
@@ -38,12 +39,12 @@ public class MapaTiled {
 	}
 	
 		
-	public Point obtenerCoordenada(int tamañoDeTiles, int altoMapa, int anchoMapa, int lugarDelSprite){
+	public Point obtenerCoordenada(int tamanoDeTiles, int altoMapa, int anchoMapa, int lugarDelSprite){
 		int contador = 0;
 		for(int y=0; y < altoMapa;y++){
 			for(int x=0; x < anchoMapa; x++){
 				if(contador == lugarDelSprite){
-					return new Point (x*tamañoDeTiles,y*tamañoDeTiles);
+					return new Point (x*tamanoDeTiles,y*tamanoDeTiles);
 				}
 				contador = contador + 1 ;
 			}
@@ -51,7 +52,7 @@ public class MapaTiled {
 		return null;
 	}
 	
-	public void crearEstructuras(List<ObjetoGrafico>  estructuras){
+	public void crearEstructuras(List<ObjectGraphic>  estructuras){
 		this.estructurasMapa = new Point[capasDeSprites.size()][];
 		this.imagenes = new String [capasDeSprites.size()][];
 		for (int i = 0; i < capasDeSprites.size(); i++) {//RECORRO LAS CAPAS
@@ -76,7 +77,7 @@ public class MapaTiled {
 	private void insertarImagenesEnLaMatriz(int i, ArrayList<String> imagenes) {
 		this.imagenes[i] = new String [imagenes.size()];
 		for (int img=0; img < imagenes.size();img++){
-			this.imagenes[i][img] = imagenes.get(img);
+			this.imagenes[i][img] = "/" + imagenes.get(img);
 		}
 	}
 
@@ -87,17 +88,18 @@ public class MapaTiled {
 		}
 	}
 
-	private void adaptarMatrizAEstructuraYCrearlas(ArrayList<String> tipoEstructura, String[][] imagen, Point[][] coordenadas, List<ObjetoGrafico>  estructuras){
+	private void adaptarMatrizAEstructuraYCrearlas(ArrayList<String> tipoEstructura, String[][] imagen, Point[][] coordenadas, List<ObjectGraphic>  estructuras){
 		for(int i = 0; i < coordenadas.length; i++){
 			for(int j=0; j < coordenadas[i].length; j++){
 				if(tipoEstructura.get(i).equals("Agua"))
-					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), imagen[i][j], new TipoDeEstructura(TipoEstructura.INDESTRUCTIBLE,false,true)));//tipoEstructura.get(i),
+					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), CargadorRecursos.cargarImagenCompatibleTranslucida(imagen[i][j]), new TipoDeEstructura(TipoEstructura.INDESTRUCTIBLE,false,true)));
 				else if(tipoEstructura.get(i).equals("Fondo"))
-					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), imagen[i][j], new TipoDeEstructura(TipoEstructura.INDESTRUCTIBLE,false,false)));
+					System.out.println("aca se tiene que eliminar el fondo del tank y pacman");
+					//		estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), CargadorRecursos.cargarImagenCompatibleTranslucida(imagen[i][j]), new TipoDeEstructura(TipoEstructura.INDESTRUCTIBLE,false,false)));
 				else if(tipoEstructura.get(i).equals("Ladrillo"))
-					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), imagen[i][j], new TipoDeEstructura(TipoEstructura.DESTRUCTIBLE,true,true)));
+					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), CargadorRecursos.cargarImagenCompatibleTranslucida(imagen[i][j]), new TipoDeEstructura(TipoEstructura.DESTRUCTIBLE,true,true)));
 				else
-					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), imagen[i][j], new TipoDeEstructura(TipoEstructura.INDESTRUCTIBLE,true, true)));
+					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), CargadorRecursos.cargarImagenCompatibleTranslucida(imagen[i][j]), new TipoDeEstructura(TipoEstructura.INDESTRUCTIBLE,true, true)));
 			}
 		}
 	}

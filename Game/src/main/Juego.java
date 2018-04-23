@@ -1,62 +1,33 @@
 package main;
 
-import java.awt.BorderLayout;
-import java.awt.Canvas;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
-
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-
 import control.Teclado;
-//import dibujador.VentanaJuego;
-import grafico.Pantalla;
+import dibujador.Draw;
+import dibujador.VentanaJuego;
+import mapa.BringDataOfTheStructure;
 
-public class Juego extends Canvas implements Runnable {
-	// private static VentanaJuego ventanaJuego;
+public class Juego implements Runnable {
 	private static volatile Thread thread; // agregamos el volatile porque estamos usando 2 threads
 	private static boolean enFuncionamiento = false;
 	private static int aps = 0; // actualizaciones por segundo
 	private static int fps = 0; // frames por segundo
+	private static int contador_aps = 0; 
+	private static int contador_fps = 0; 
 	private static Teclado teclado;
-	private static int x = 0;
-	private static int y = 0;
-	private static String CONTADOR_APS = "";
-	private static String CONTADOR_FPS = "";
-	private static Pantalla pantalla;
-	private static BufferedImage imagen = new BufferedImage(Constantes.ANCHO, Constantes.ALTO,
-			BufferedImage.TYPE_INT_RGB);
-	private static int [] pixeles = ((DataBufferInt) imagen.getRaster().getDataBuffer()).getData();
-	private static final ImageIcon icono = new ImageIcon (Juego.class.getResource("/icono/icono.png"));
-	
-	// ventanaJuego
-	private static final long serialVersionUID = 1L;
-	private static JFrame ventana;
-	// ventanaJuego
 
+	@SuppressWarnings("unused")
+	private static VentanaJuego ventanaJuego;
+	private BringDataOfTheStructure dataStructures;
+	private Draw draw;
+	
 	public Juego() {
-		// ventanaJuego
-		setPreferredSize(new Dimension(Constantes.ANCHO, Constantes.ALTO));
-		ventana = new JFrame(Constantes.NOMBREJUEGO);
-		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ventana.setResizable(false);
-		ventana.setIconImage(icono.getImage());
-		ventana.setUndecorated(true);//ESTO SACA LOS BORDES DE LA PANTALLA, SI QUIEREN LO COMENTAN, NO PASA NADA
-		ventana.setLayout(new BorderLayout());
-		ventana.add(this, BorderLayout.CENTER);
-		ventana.pack();
-		ventana.setLocationRelativeTo(null);
-		ventana.setVisible(true);
-		// ventanaJuego
 		
-		pantalla = new Pantalla(Constantes.ANCHO, Constantes.ALTO);
 		teclado = new Teclado();
-		addKeyListener(teclado);
-		setFocusable(true);
-		// ventanaJuego = new VentanaJuego();
+		//addKeyListener(teclado);
+		//setFocusable(true);
+		dataStructures = new BringDataOfTheStructure();
+		dataStructures.llenarLista();
+		draw = new Draw(dataStructures.getObjetos());
+		ventanaJuego = new VentanaJuego(draw);
 	}
 
 	// synchronized permite que no se puedan ejecutar al mismo tiempo
@@ -77,16 +48,6 @@ public class Juego extends Canvas implements Runnable {
 
 	public void actualizar() {
 		teclado.actualizar();
-		//mueve la pantalla para centrar el personaje
-	/*	if(teclado.arriba) {
-			y++;
-		}if(teclado.abajo) {
-			y--;
-		}if(teclado.izquierda) {
-			x++;
-		}if(teclado.derecha) {
-			x--;
-		}*/
 		if(teclado.salir) {
 			System.exit(0);
 		}
@@ -94,28 +55,7 @@ public class Juego extends Canvas implements Runnable {
 	}
 
 	public void mostrar() {
-		BufferStrategy estrategia = getBufferStrategy();
-		if(estrategia == null) {
-			createBufferStrategy(3);
-			return;
-		}
-		
-		pantalla.limpiar();
-		pantalla.mostrar(x, y);
-		
-		//tenemos que copiar el bluc for de la pantalla al bucle juego
-		//copiamos el array de pantalla.pixeles al pixeles del juego
-		System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
-		//graphics se va a encargar de dibujar las cosas que tenga estrategia.
-		Graphics g = estrategia.getDrawGraphics();
-		
-		g.drawImage(imagen, 0, 0,getWidth(), getHeight(), null);
-		g.drawString(CONTADOR_APS, 10, 20);
-		g.drawString(CONTADOR_FPS, 10, 35);
-		g.dispose();
-		
-		estrategia.show();
-		
+		draw.DrawImages();
 		fps++;
 	}
 
@@ -134,7 +74,7 @@ public class Juego extends Canvas implements Runnable {
 		double tiempoTranscurrido;
 		double delta = 0;
 
-		requestFocus();// saltea tener que hacer el clik en pantalla. (osea, podes tocar teclas cuando
+		//requestFocus();// saltea tener que hacer el clik en pantalla. (osea, podes tocar teclas cuando
 						// se inicia)
 
 		while (enFuncionamiento) {
@@ -154,12 +94,21 @@ public class Juego extends Canvas implements Runnable {
 
 			if (System.nanoTime() - referenciaContador > NS_POR_SEGUNDO) {// esto hace que el contador se actualice cada
 																			// segundo.
-				CONTADOR_APS = "Aps: " + aps;
-				CONTADOR_FPS = "Fps: " + fps;
+				contador_aps = aps;
+				contador_fps = fps;
 				aps = 0;
 				fps = 0;
 				referenciaContador = System.nanoTime();
 			}
 		}
 	}
+
+	public static int getCONTADOR_APS() {
+		return contador_aps;
+	}
+
+	public static int getCONTADOR_FPS() {
+		return contador_fps;
+	}
+	
 }
