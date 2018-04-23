@@ -26,7 +26,7 @@ public class Game implements Runnable {
 	// synchronized permite que no se puedan ejecutar al mismo tiempo
 	public synchronized void start() {
 		working = true;
-		thread = new Thread(this, "Graficos");
+		thread = new Thread(this, "Graphics");
 		thread.start();
 	}
 
