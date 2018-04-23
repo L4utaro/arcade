@@ -5,23 +5,23 @@ import main.Constants;
 import model.ObjectGraphic;
 
 public class BringDataOfTheStructure {
-	private ArrayList<ObjectGraphic> objetos;
-	private MapaTiled mapaTiled;
+	private ArrayList<ObjectGraphic> objects;
+	private MapTiled mapTiled;
 	
 	public BringDataOfTheStructure() {
-		objetos = new ArrayList<>();
-		mapaTiled = new MapaTiled(Constants.ROUTE_MAP_TANK03);
-		mapaTiled.inicializar();
+		objects = new ArrayList<>();
+		mapTiled = new MapTiled(Constants.ROUTE_MAP_TANK03);
+		mapTiled.initialize();
 	}
 
-	public void llenarLista() {
-		mapaTiled.crearEstructuras(objetos);
+	public void fillList() {
+		mapTiled.createStructures(objects);
 	}
 
-	public ArrayList<ObjectGraphic> getObjetos() {
-		return objetos;
+	public ArrayList<ObjectGraphic> getObjects() {
+		return objects;
 	}
-	public void setObjetos(ArrayList<ObjectGraphic> objetos) {
-		this.objetos = objetos;
+	public void setObjects(ArrayList<ObjectGraphic> objects) {
+		this.objects = objects;
 	}
 }

@@ -15,50 +15,50 @@ import javax.imageio.ImageIO;
 
 public class ChargerResource {
 	
-	public static String readTextFile(final String ruta) {
-		String contenido = "";
-		InputStream entradaBytes = ClassLoader.class.getResourceAsStream(ruta);
-		BufferedReader lector = new BufferedReader(new InputStreamReader(entradaBytes));
-		String linea;
+	public static String readTextFile(final String route) {
+		String content = "";
+		InputStream imputBytes = ClassLoader.class.getResourceAsStream(route);
+		BufferedReader reader = new BufferedReader(new InputStreamReader(imputBytes));
+		String line;
 		try {
-			while ((linea = lector.readLine()) != null) {
-				contenido += linea;
+			while ((line = reader.readLine()) != null) {
+				content += line;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (entradaBytes != null) {
-					entradaBytes.close();
+				if (imputBytes != null) {
+					imputBytes.close();
 				}
-				if (lector != null) {
-					lector.close();
+				if (reader != null) {
+					reader.close();
 				}
 			} catch (IOException ex) {
 				ex.printStackTrace();
 			}
 		}
-		return contenido;
+		return content;
 	}
 	
-	public static BufferedImage loadImageTranslated(final String ruta) {
-		Image imagen = null;
+	public static BufferedImage loadImageTranslated(final String route) {
+		Image image = null;
 
 		try {
-			imagen = ImageIO.read(ClassLoader.class.getResource(ruta));
+			image = ImageIO.read(ClassLoader.class.getResource(route));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
 
-		BufferedImage imagenAcelerada = gc.createCompatibleImage(imagen.getWidth(null), imagen.getHeight(null), Transparency.TRANSLUCENT);
+		BufferedImage acceleratedImage = gc.createCompatibleImage(image.getWidth(null), image.getHeight(null), Transparency.TRANSLUCENT);
 
-		Graphics g = imagenAcelerada.getGraphics();
-		g.drawImage(imagen, 0, 0, null);
+		Graphics g = acceleratedImage.getGraphics();
+		g.drawImage(image, 0, 0, null);
 		g.dispose();
 
-		return imagenAcelerada;
+		return acceleratedImage;
 	}
 
 }

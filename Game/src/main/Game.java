@@ -18,8 +18,8 @@ public class Game implements Runnable {
 	
 	public Game() {
 		dataStructures = new BringDataOfTheStructure();
-		dataStructures.llenarLista();
-		draw = new Draw(dataStructures.getObjetos());
+		dataStructures.fillList();
+		draw = new Draw(dataStructures.getObjects());
 		viewGame = new ViewGame(draw);
 	}
 
