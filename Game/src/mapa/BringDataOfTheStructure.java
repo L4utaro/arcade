@@ -2,7 +2,7 @@ package mapa;
 
 import java.util.ArrayList;
 import main.Constantes;
-import modelo.ObjectGraphic;
+import model.ObjectGraphic;
 
 public class BringDataOfTheStructure {
 	private ArrayList<ObjectGraphic> objetos;

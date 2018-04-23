@@ -7,7 +7,7 @@ import java.util.List;
 import enums.TipoEstructura;
 import estructura.Estructura;
 import estructura.TipoDeEstructura;
-import modelo.ObjectGraphic;
+import model.ObjectGraphic;
 import util.CargadorRecursos;
 
 public class MapaTiled {
@@ -59,8 +59,8 @@ public class MapaTiled {
 			int totalTilesPorCapa = 0;
 			ArrayList<Point> coordenadas = new ArrayList<>();
 			ArrayList<String> imagenes = new ArrayList<>();
-			for (int j = 0; j < capasDeSprites.get(i).getSprites().length; j++) {//RECORRO LOS TILES DE CADA CAPA
-				if (capasDeSprites.get(i).getSprites()[j] != -1) {
+			for (int j = 0; j < capasDeSprites.get(i).getArrayPosSprites().length; j++) {//RECORRO LOS TILES DE CADA CAPA
+				if (capasDeSprites.get(i).getArrayPosSprites()[j] != -1) {
 					totalTilesPorCapa = totalTilesPorCapa + 1; //GUARDO EL TOTAL DE TILES DE LA CAPA
 					coordenadas.add(obtenerCoordenada(40, lectorTiled.getAltoMapaEnTiles(), lectorTiled.getAnchoMapaEnTiles(), j)); //GUARDO TODAS LAS COORDENADAS
 					imagenes.add(capasDeSprites.get(i).getSpritesImagenes()[j]);

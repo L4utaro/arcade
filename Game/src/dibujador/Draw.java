@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import main.Constantes;
 import main.Juego;
-import modelo.ObjectGraphic;
+import model.ObjectGraphic;
 
 public class Draw  extends Canvas {
 	private static final long serialVersionUID = -6227038142688953660L;

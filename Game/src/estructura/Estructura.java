@@ -3,7 +3,7 @@ package estructura;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 
-import modelo.ObjectGraphic;
+import model.ObjectGraphic;
 
 public class Estructura extends ObjectGraphic {
 	private TipoDeEstructura tipoDeEstructura;

@@ -2,7 +2,7 @@ package main;
 
 import control.Teclado;
 import dibujador.Draw;
-import dibujador.VentanaJuego;
+import dibujador.ViewGame;
 import mapa.BringDataOfTheStructure;
 
 public class Juego implements Runnable {
@@ -15,7 +15,7 @@ public class Juego implements Runnable {
 	private static Teclado teclado;
 
 	@SuppressWarnings("unused")
-	private static VentanaJuego ventanaJuego;
+	private static ViewGame viewGame;
 	private BringDataOfTheStructure dataStructures;
 	private Draw draw;
 	
@@ -27,7 +27,7 @@ public class Juego implements Runnable {
 		dataStructures = new BringDataOfTheStructure();
 		dataStructures.llenarLista();
 		draw = new Draw(dataStructures.getObjetos());
-		ventanaJuego = new VentanaJuego(draw);
+		viewGame = new ViewGame(draw);
 	}
 
 	// synchronized permite que no se puedan ejecutar al mismo tiempo

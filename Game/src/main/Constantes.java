@@ -4,7 +4,7 @@ public class Constantes {
 	public static final int ANCHO = 1000;
 	public static final int ALTO = 600;
 	public static final String NOMBREJUEGO = "Battle-UNGS";
-	public static final String RUTA_ICONO = "/icono/icono.png";
+	public static final String RUTA_ICON = "/icono/icono.png";
 	public static final String RUTA_IMAGEN_LADRILLO = "/imagen/ladrillo.png";
 	public static final String RUTA_IMAGEN_ACERO = "/imagen/acero.png";
 	public static final String RUTA_IMAGEN_AGUA = "/imagen/agua.png";

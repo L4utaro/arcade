@@ -4,18 +4,18 @@ import java.awt.Point;
 
 public class CapaSprites extends CapaTiled{
 	private String imagenCapa;
-	private int[] sprites;
+	private int[] arrayPosSprites;
 	private String[] spritesImagenes;
 	
-	public CapaSprites(String nombre, String imagenCapa, Point size, Point coordinate, int []sprites, String[] spritesCapaDeImagenes){
+	public CapaSprites(String nombre, String imagenCapa, Point size, Point coordinate, int []arrayPosSprites, String[] spritesCapaDeImagenes){
 		super(nombre, size, coordinate);
 		this.imagenCapa = imagenCapa;
-		this.sprites = sprites;
+		this.arrayPosSprites = arrayPosSprites;
 		this.spritesImagenes = spritesCapaDeImagenes;
 	}
 
-	public int[] getSprites() {
-		return sprites;
+	public int[] getArrayPosSprites() {
+		return arrayPosSprites;
 	}
 
 	public String getImagenCapa() {
