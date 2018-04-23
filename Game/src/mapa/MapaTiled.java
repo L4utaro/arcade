@@ -1,14 +1,14 @@
 package mapa;
 
 import java.awt.Point;
-
 import java.util.ArrayList;
 import java.util.List;
+
 import enums.TipoEstructura;
 import estructura.Estructura;
 import estructura.TipoDeEstructura;
 import model.ObjectGraphic;
-import util.CargadorRecursos;
+import util.ChargerResource;
 
 public class MapaTiled {
 	private String contenido;
@@ -19,7 +19,7 @@ public class MapaTiled {
 	private String[][] imagenes;
 	
 	public MapaTiled(final String ruta){
-		contenido = CargadorRecursos.leerArchivoTexto(ruta);
+		contenido = ChargerResource.readTextFile(ruta);
 		lectorTiled = new LectorTiled(contenido);
 		this.capasDeSprites = new ArrayList<CapaSprites>();
 		this.tiposDeEstructuras = new ArrayList<>();
@@ -92,14 +92,13 @@ public class MapaTiled {
 		for(int i = 0; i < coordenadas.length; i++){
 			for(int j=0; j < coordenadas[i].length; j++){
 				if(tipoEstructura.get(i).equals("Agua"))
-					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), CargadorRecursos.cargarImagenCompatibleTranslucida(imagen[i][j]), new TipoDeEstructura(TipoEstructura.INDESTRUCTIBLE,false,true)));
+					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), ChargerResource.loadImageTranslated(imagen[i][j]), new TipoDeEstructura(TipoEstructura.INDESTRUCTIBLE,false,true)));
 				else if(tipoEstructura.get(i).equals("Fondo"))
-					System.out.println("aca se tiene que eliminar el fondo del tank y pacman");
-					//		estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), CargadorRecursos.cargarImagenCompatibleTranslucida(imagen[i][j]), new TipoDeEstructura(TipoEstructura.INDESTRUCTIBLE,false,false)));
+					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), ChargerResource.loadImageTranslated(imagen[i][j]), new TipoDeEstructura(TipoEstructura.INDESTRUCTIBLE,false,false)));
 				else if(tipoEstructura.get(i).equals("Ladrillo"))
-					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), CargadorRecursos.cargarImagenCompatibleTranslucida(imagen[i][j]), new TipoDeEstructura(TipoEstructura.DESTRUCTIBLE,true,true)));
+					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), ChargerResource.loadImageTranslated(imagen[i][j]), new TipoDeEstructura(TipoEstructura.DESTRUCTIBLE,true,true)));
 				else
-					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), CargadorRecursos.cargarImagenCompatibleTranslucida(imagen[i][j]), new TipoDeEstructura(TipoEstructura.INDESTRUCTIBLE,true, true)));
+					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), ChargerResource.loadImageTranslated(imagen[i][j]), new TipoDeEstructura(TipoEstructura.INDESTRUCTIBLE,true, true)));
 			}
 		}
 	}

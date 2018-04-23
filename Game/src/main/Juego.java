@@ -1,8 +1,7 @@
 package main;
 
-import control.Teclado;
-import dibujador.Draw;
-import dibujador.ViewGame;
+import drawer.Draw;
+import drawer.ViewGame;
 import mapa.BringDataOfTheStructure;
 
 public class Juego implements Runnable {
@@ -12,18 +11,12 @@ public class Juego implements Runnable {
 	private static int fps = 0; // frames por segundo
 	private static int contador_aps = 0; 
 	private static int contador_fps = 0; 
-	private static Teclado teclado;
-
 	@SuppressWarnings("unused")
 	private static ViewGame viewGame;
 	private BringDataOfTheStructure dataStructures;
 	private Draw draw;
 	
 	public Juego() {
-		
-		teclado = new Teclado();
-		//addKeyListener(teclado);
-		//setFocusable(true);
 		dataStructures = new BringDataOfTheStructure();
 		dataStructures.llenarLista();
 		draw = new Draw(dataStructures.getObjetos());
@@ -47,10 +40,6 @@ public class Juego implements Runnable {
 	}
 
 	public void actualizar() {
-		teclado.actualizar();
-		if(teclado.salir) {
-			System.exit(0);
-		}
 		aps++;
 	}
 

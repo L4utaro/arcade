@@ -1,5 +1,10 @@
-/mapa/
+/controles/
 /dibujador/
+/enums/
 /estructura/
-/model/
 /main/
+/mapa/
+/model/
+/util/
+/controls/
+/drawer/

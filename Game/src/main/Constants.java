@@ -1,10 +1,10 @@
 package main;
 
-public class Constantes {
-	public static final int ANCHO = 1000;
-	public static final int ALTO = 600;
-	public static final String NOMBREJUEGO = "Battle-UNGS";
-	public static final String RUTA_ICON = "/icono/icono.png";
+public class Constants {
+	public static final int WIDTH = 1000;
+	public static final int HEIGHT = 600;
+	public static final String GAMENAME = "Battle-UNGS";
+	public static final String ROUTE_ICON = "/icono/icono.png";
 	public static final String RUTA_IMAGEN_LADRILLO = "/imagen/ladrillo.png";
 	public static final String RUTA_IMAGEN_ACERO = "/imagen/acero.png";
 	public static final String RUTA_IMAGEN_AGUA = "/imagen/agua.png";
@@ -19,9 +19,5 @@ public class Constantes {
 	public static final String RUTA_MAPA_TANK05 = "/maps/MapaTank05.csv";
 	public static final String RUTA_MAPA_BOMBERMAN01 = "/maps/Bomberman01.csv";
 	public static final String RUTA_MAPA_PACMAN01 = "/maps/Pacman01.csv";
-	
-	// 4:3
-	public static double FACTOR_ESCALADO_X = (double) ANCHO / (double) ANCHO;
-	public static double FACTOR_ESCALADO_Y = (double) ALTO / (double) ALTO;
 	
 }

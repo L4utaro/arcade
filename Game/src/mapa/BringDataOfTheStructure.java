@@ -1,7 +1,7 @@
 package mapa;
 
 import java.util.ArrayList;
-import main.Constantes;
+import main.Constants;
 import model.ObjectGraphic;
 
 public class BringDataOfTheStructure {
@@ -10,7 +10,7 @@ public class BringDataOfTheStructure {
 	
 	public BringDataOfTheStructure() {
 		objetos = new ArrayList<>();
-		mapaTiled = new MapaTiled(Constantes.RUTA_MAPA_TANK05);
+		mapaTiled = new MapaTiled(Constants.RUTA_MAPA_TANK05);
 		mapaTiled.inicializar();
 	}
 

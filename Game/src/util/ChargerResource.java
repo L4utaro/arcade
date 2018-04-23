@@ -1,7 +1,5 @@
 package util;
 
-import java.awt.Font;
-import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsEnvironment;
@@ -15,8 +13,9 @@ import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
 
-public class CargadorRecursos {
-	public static String leerArchivoTexto(final String ruta) {
+public class ChargerResource {
+	
+	public static String readTextFile(final String ruta) {
 		String contenido = "";
 		InputStream entradaBytes = ClassLoader.class.getResourceAsStream(ruta);
 		BufferedReader lector = new BufferedReader(new InputStreamReader(entradaBytes));
@@ -42,24 +41,7 @@ public class CargadorRecursos {
 		return contenido;
 	}
 	
-	public static Font cargarFuente(final String ruta) {
-		Font fuente = null;
-
-		InputStream entradaBytes = ClassLoader.class.getResourceAsStream(ruta);
-
-		try {
-			fuente = Font.createFont(Font.TRUETYPE_FONT, entradaBytes);
-		} catch (FontFormatException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		fuente = fuente.deriveFont(12f);
-
-		return fuente;
-	}
-	public static BufferedImage cargarImagenCompatibleTranslucida(final String ruta) {
+	public static BufferedImage loadImageTranslated(final String ruta) {
 		Image imagen = null;
 
 		try {
