@@ -10,7 +10,7 @@ public class BringDataOfTheStructure {
 	
 	public BringDataOfTheStructure() {
 		objetos = new ArrayList<>();
-		mapaTiled = new MapaTiled(Constants.RUTA_MAPA_TANK05);
+		mapaTiled = new MapaTiled(Constants.ROUTE_MAP_TANK03);
 		mapaTiled.inicializar();
 	}
 

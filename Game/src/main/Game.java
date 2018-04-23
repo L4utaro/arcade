@@ -4,9 +4,9 @@ import drawer.Draw;
 import drawer.ViewGame;
 import mapa.BringDataOfTheStructure;
 
-public class Juego implements Runnable {
+public class Game implements Runnable {
 	private static volatile Thread thread; // agregamos el volatile porque estamos usando 2 threads
-	private static boolean enFuncionamiento = false;
+	private static boolean working = false;
 	private static int aps = 0; // actualizaciones por segundo
 	private static int fps = 0; // frames por segundo
 	private static int contador_aps = 0; 
@@ -16,7 +16,7 @@ public class Juego implements Runnable {
 	private BringDataOfTheStructure dataStructures;
 	private Draw draw;
 	
-	public Juego() {
+	public Game() {
 		dataStructures = new BringDataOfTheStructure();
 		dataStructures.llenarLista();
 		draw = new Draw(dataStructures.getObjetos());
@@ -24,26 +24,17 @@ public class Juego implements Runnable {
 	}
 
 	// synchronized permite que no se puedan ejecutar al mismo tiempo
-	public synchronized void iniciar() {
-		enFuncionamiento = true;
+	public synchronized void start() {
+		working = true;
 		thread = new Thread(this, "Graficos");
 		thread.start();
 	}
 
-	public synchronized void detener() {
-		enFuncionamiento = false;
-		try {
-			thread.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void actualizar() {
+	public void update() {
 		aps++;
 	}
 
-	public void mostrar() {
+	public void show() {
 		draw.DrawImages();
 		fps++;
 	}
@@ -55,31 +46,25 @@ public class Juego implements Runnable {
 		final byte APS_OBJETIVO = 60; // cuantas actualizaciones queremos por segundo (60)
 		final double NS_POR_ACTUALIZACION = NS_POR_SEGUNDO / APS_OBJETIVO; // cuantos nanosegundos transcurren por
 																			// actualizacion
-
 		long referenciaActualizacion = System.nanoTime(); // se almacena una cantidad exacta de nanosegundos, justo en
 															// el momento que se ejecuta
 		long referenciaContador = System.nanoTime(); // para contar los frames (EXTRA)
-
 		double tiempoTranscurrido;
 		double delta = 0;
 
-		//requestFocus();// saltea tener que hacer el clik en pantalla. (osea, podes tocar teclas cuando
-						// se inicia)
-
-		while (enFuncionamiento) {
+		while (working) {
 			final long inicioBucle = System.nanoTime(); // tomamos la cantidad exacta de nanosegundos cuando comienza el
 														// bucle
 			tiempoTranscurrido = inicioBucle - referenciaActualizacion;// tomamos el tiempo transcurrido de cada ciclo
 			referenciaActualizacion = inicioBucle;
-
 			delta += tiempoTranscurrido / NS_POR_ACTUALIZACION; // sumamos a delta el tiempo trascurrido del ciclo
 																// dividido por los nanosegundos
 			while (delta >= 1) { // una vez que delta ya cumplio en llegar a uno de los bytes de APS_OBJETIVO, el
 									// juego se actualizara
-				actualizar();
+				update();
 				delta--;
 			}
-			mostrar();
+			show();
 
 			if (System.nanoTime() - referenciaContador > NS_POR_SEGUNDO) {// esto hace que el contador se actualice cada
 																			// segundo.

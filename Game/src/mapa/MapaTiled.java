@@ -4,9 +4,9 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-import enums.TipoEstructura;
-import estructura.Estructura;
-import estructura.TipoDeEstructura;
+import enums.StructureType;
+import estructura.Structure;
+import estructura.TypeOfStructure;
 import model.ObjectGraphic;
 import util.ChargerResource;
 
@@ -92,13 +92,13 @@ public class MapaTiled {
 		for(int i = 0; i < coordenadas.length; i++){
 			for(int j=0; j < coordenadas[i].length; j++){
 				if(tipoEstructura.get(i).equals("Agua"))
-					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), ChargerResource.loadImageTranslated(imagen[i][j]), new TipoDeEstructura(TipoEstructura.INDESTRUCTIBLE,false,true)));
+					estructuras.add(new Structure(coordenadas[i][j], new Point(40,40), ChargerResource.loadImageTranslated(imagen[i][j]), new TypeOfStructure(StructureType.UNDESTROYABLE,false,true)));
 				else if(tipoEstructura.get(i).equals("Fondo"))
-					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), ChargerResource.loadImageTranslated(imagen[i][j]), new TipoDeEstructura(TipoEstructura.INDESTRUCTIBLE,false,false)));
+					estructuras.add(new Structure(coordenadas[i][j], new Point(40,40), ChargerResource.loadImageTranslated(imagen[i][j]), new TypeOfStructure(StructureType.UNDESTROYABLE,false,false)));
 				else if(tipoEstructura.get(i).equals("Ladrillo"))
-					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), ChargerResource.loadImageTranslated(imagen[i][j]), new TipoDeEstructura(TipoEstructura.DESTRUCTIBLE,true,true)));
+					estructuras.add(new Structure(coordenadas[i][j], new Point(40,40), ChargerResource.loadImageTranslated(imagen[i][j]), new TypeOfStructure(StructureType.DESTROYABLE,true,true)));
 				else
-					estructuras.add(new Estructura(coordenadas[i][j], new Point(40,40), ChargerResource.loadImageTranslated(imagen[i][j]), new TipoDeEstructura(TipoEstructura.INDESTRUCTIBLE,true, true)));
+					estructuras.add(new Structure(coordenadas[i][j], new Point(40,40), ChargerResource.loadImageTranslated(imagen[i][j]), new TypeOfStructure(StructureType.UNDESTROYABLE,true, true)));
 			}
 		}
 	}

@@ -9,11 +9,11 @@ import java.util.ArrayList;
 
 import controls.ManagerControl;
 import main.Constants;
-import main.Juego;
+import main.Game;
 import model.ObjectGraphic;
 
 public class Draw  extends Canvas {
-	private static final long serialVersionUID = -6227038142688953660L;
+	private static final long serialVersionUID = 2L;//-6227038142688953660
 	private ArrayList<ObjectGraphic> data;
 
 	public Draw(ArrayList<ObjectGraphic> data) {
@@ -40,8 +40,8 @@ public class Draw  extends Canvas {
 		}
 
 		g.setColor(Color.white);
-		DrawCommand.drawString(g, "APS: " + Juego.getCONTADOR_APS(), 20, 20);
-		DrawCommand.drawString(g, "FPS: " + Juego.getCONTADOR_FPS(), 20, 30);
+		DrawCommand.drawString(g, "APS: " + Game.getCONTADOR_APS(), 20, 20);
+		DrawCommand.drawString(g, "FPS: " + Game.getCONTADOR_FPS(), 20, 30);
 		
 		g.dispose();
 		buffer.show();
