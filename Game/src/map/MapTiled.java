@@ -1,13 +1,13 @@
-package mapa;
+package map;
 
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
 import enums.StructureType;
-import estructura.Structure;
-import estructura.TypeOfStructure;
 import model.ObjectGraphic;
+import structure.Structure;
+import structure.TypeOfStructure;
 import util.ChargerResource;
 
 public class MapTiled {

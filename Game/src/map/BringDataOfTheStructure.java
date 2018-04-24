@@ -1,4 +1,4 @@
-package mapa;
+package map;
 
 import java.util.ArrayList;
 import main.Constants;

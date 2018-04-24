@@ -2,7 +2,7 @@ package main;
 
 import drawer.Draw;
 import drawer.ViewGame;
-import mapa.BringDataOfTheStructure;
+import map.BringDataOfTheStructure;
 
 public class Game implements Runnable {
 	private static volatile Thread thread; // agregamos el volatile porque estamos usando 2 threads

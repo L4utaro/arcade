@@ -1,4 +1,4 @@
-package estructura;
+package structure;
 
 import java.awt.Point;
 import java.awt.image.BufferedImage;

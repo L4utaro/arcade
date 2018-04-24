@@ -1,4 +1,4 @@
-package estructura;
+package structure;
 
 import enums.StructureType;
 
