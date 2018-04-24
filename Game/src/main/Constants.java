@@ -4,6 +4,8 @@ public class Constants {
 	public static final int WIDTH = 1000;
 	public static final int HEIGHT = 600;
 	public static final String GAMENAME = "Battle-UNGS";
+	public static final String ROUTE_PROPERTIES = "src/main/resources/configuration/archivo.properties";//"src/main/java/properties/archivo.properties";
+		
 	public static final String ROUTE_ICON = "/icono/icono.png";
 	public static final String ROUTE_IMAGE_LADRILLO = "/imagen/ladrillo.png";
 	public static final String ROUTE_IMAGE_ACERO = "/imagen/acero.png";
