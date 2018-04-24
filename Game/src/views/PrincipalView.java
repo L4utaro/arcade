@@ -16,6 +16,7 @@ public class PrincipalView{
 	private JFrame frmPrincipalView;
 	private JPanel principalMain;
 	private JPanel configurationPanel;
+	private JPanel mapPanel;
 	private JButton btnPlay;
 	private JButton btnConfiguration;
 	private JButton btnAccept;
@@ -126,6 +127,10 @@ public class PrincipalView{
 		btnConfiguration = new JButton("Configuration");
 		btnConfiguration.setBounds(150, 425, 111, 50);
 		principalMain.add(btnConfiguration);
+		
+		mapPanel = new JPanel();
+		mapPanel.setBounds(50, 50, 500, 350);
+		principalMain.add(mapPanel);
 	}
 
 	public JFrame getFrmPrincipalView() {
