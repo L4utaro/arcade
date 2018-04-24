@@ -4,13 +4,16 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
+import java.awt.image.ImageProducer;
 
 import javax.swing.JTextField;
 import java.awt.event.KeyAdapter;
+import javax.swing.JRadioButton;
 
 public class PrincipalView{
 	private JFrame frmPrincipalView;
@@ -24,6 +27,7 @@ public class PrincipalView{
 	private JTextField textFieldDown;
 	private JTextField textFieldLeft;
 	private JTextField textFieldRight;
+	private JRadioButton rdbtnTank;
 
 	public PrincipalView() {
 		frmPrincipalView = new JFrame();
@@ -120,17 +124,22 @@ public class PrincipalView{
 		configurationPanel.add(textFieldRight);
 		textFieldRight.setColumns(10);
 		
-		btnPlay = new JButton("Play");
+		btnPlay = new JButton("Play");//new ImageIcon ("/icono/iconPlay")
 		btnPlay.setBounds(350, 425, 111, 50);
 		principalMain.add(btnPlay);
 
-		btnConfiguration = new JButton("Configuration");
+		btnConfiguration = new JButton(new ImageIcon ("(/icono/iconTankMini.png"));//new ImageIcon ("/icono/iconConfiguration")
 		btnConfiguration.setBounds(150, 425, 111, 50);
 		principalMain.add(btnConfiguration);
 		
 		mapPanel = new JPanel();
 		mapPanel.setBounds(50, 50, 500, 350);
 		principalMain.add(mapPanel);
+		
+		rdbtnTank = new JRadioButton("Tank");
+		rdbtnTank.setBounds(100, 100, 250, 150);
+		//rdbtnTank.createImage((ImageProducer) new ImageIcon(getClass().getResource("/icono/iconTankMini.png")).getImage());
+		mapPanel.add(rdbtnTank);
 	}
 
 	public JFrame getFrmPrincipalView() {
