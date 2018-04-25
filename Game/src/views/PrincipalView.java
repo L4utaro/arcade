@@ -4,12 +4,12 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
-import java.awt.image.ImageProducer;
 
 import javax.swing.JTextField;
 import java.awt.event.KeyAdapter;
@@ -27,7 +27,10 @@ public class PrincipalView{
 	private JTextField textFieldDown;
 	private JTextField textFieldLeft;
 	private JTextField textFieldRight;
+	private ButtonGroup rdbtnGroupMap;
 	private JRadioButton rdbtnTank;
+	private JRadioButton rdbtnPacman;
+	private JRadioButton rdbtnBomberman;
 
 	public PrincipalView() {
 		frmPrincipalView = new JFrame();
@@ -141,9 +144,22 @@ public class PrincipalView{
 		principalMain.add(mapPanel);
 		
 		rdbtnTank = new JRadioButton("Tank");
-		rdbtnTank.setBounds(100, 100, 250, 150);
+		rdbtnTank.setBounds(200, 200, 250, 150);
 		//rdbtnTank.createImage((ImageProducer) new ImageIcon(getClass().getResource("/icono/iconTankMini.png")).getImage());
 		mapPanel.add(rdbtnTank);
+		
+		rdbtnPacman = new JRadioButton("Pacman");
+		rdbtnPacman.setBounds(300, 200, 250, 150);
+		mapPanel.add(rdbtnPacman);
+
+		rdbtnBomberman = new JRadioButton("Bomberman");
+		rdbtnBomberman.setBounds(400, 200, 250, 150);
+		mapPanel.add(rdbtnBomberman);
+		
+		rdbtnGroupMap = new ButtonGroup();
+		rdbtnGroupMap.add(rdbtnTank);
+		rdbtnGroupMap.add(rdbtnPacman);
+		rdbtnGroupMap.add(rdbtnBomberman);
 	}
 
 	public JFrame getFrmPrincipalView() {
@@ -184,5 +200,25 @@ public class PrincipalView{
 
 	public JTextField getTextFieldRight() {
 		return textFieldRight;
+	}
+
+	public JPanel getMapPanel() {
+		return mapPanel;
+	}
+
+	public ButtonGroup getRdbtnGroupMap() {
+		return rdbtnGroupMap;
+	}
+
+	public JRadioButton getRdbtnTank() {
+		return rdbtnTank;
+	}
+
+	public JRadioButton getRdbtnPacman() {
+		return rdbtnPacman;
+	}
+
+	public JRadioButton getRdbtnBomberman() {
+		return rdbtnBomberman;
 	}
 }

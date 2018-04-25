@@ -2,6 +2,7 @@ package main;
 
 import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
+
 import claseProperties.EleccionMenu;
 import claseProperties.Principal;
 import views.PrincipalView;
@@ -20,16 +21,17 @@ public class ControlPrincipalView implements ActionListener{
 	public void iniciar() {
 		this.principalView.getFrmPrincipalView().setVisible(true);
 		this.principalView.getPrincipalMain().setVisible(true);
+		this.principalView.getRdbtnTank().setSelected(true);
 	}
 	
 	public void actionPerformed(ActionEvent e) 
 	{
-		
 		if (e.getSource() == this.principalView.getBtnConfiguration()) {
 			this.principalView.getConfigurationPanel().setVisible(true);
 		}
 		
 		else if (e.getSource() == this.principalView.getBtnAccept()) {
+
 			this.principalView.getConfigurationPanel().setVisible(false);
 
 			String up = this.principalView.getTextFieldUp().getText();
