@@ -19,9 +19,9 @@ public class ControlPrincipalView implements ActionListener{
 	}
 	
 	public void iniciar() {
-		this.principalView.getFrmPrincipalView().setVisible(true);
-		this.principalView.getPrincipalMain().setVisible(true);
-		this.principalView.getRdbtnTank().setSelected(true);
+		this.principalView.getFrmPrincipalView().setVisible(true);		//encapsular codigo repetido
+		this.principalView.getPrincipalMain().setVisible(true);			//encapsular codigo repetido
+		this.principalView.getRdbtnTank().setSelected(true);			//encapsular codigo repetido
 	}
 	
 	public void actionPerformed(ActionEvent e) 
@@ -34,10 +34,10 @@ public class ControlPrincipalView implements ActionListener{
 
 			this.principalView.getConfigurationPanel().setVisible(false);
 
-			String up = this.principalView.getTextFieldUp().getText();
-			String down = this.principalView.getTextFieldDown().getText();
-			String left = this.principalView.getTextFieldLeft().getText();
-			String right = this.principalView.getTextFieldRight().getText();
+			String up = this.principalView.getTextFieldUp().getText();		//encapsular codigo repetido
+			String down = this.principalView.getTextFieldDown().getText();	//encapsular codigo repetido
+			String left = this.principalView.getTextFieldLeft().getText();	//encapsular codigo repetido
+			String right = this.principalView.getTextFieldRight().getText();//encapsular codigo repetido
 			//String shoot = this.principalView.getTextShoot().getText(); // AGREGAR TECLA DE DISPARO
 			// guardar informacion de la configuracion
 
