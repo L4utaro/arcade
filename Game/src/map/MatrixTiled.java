@@ -8,7 +8,7 @@ import enums.StructureType;
 import model.ObjectGraphic;
 import structure.Structure;
 import structure.TypeOfStructure;
-import util.ChargerResource;
+import util.LoadImage;
 
 public class MatrixTiled {
 	
@@ -34,13 +34,13 @@ public class MatrixTiled {
 		for(int i = 0; i < coordinates.length; i++){
 			for(int j=0; j < coordinates[i].length; j++){
 				if(typeStructures.get(i).equals("Agua"))
-					structures.add(new Structure(coordinates[i][j], new Point(40,40), ChargerResource.loadImageTranslated(image[i][j]), new TypeOfStructure(StructureType.UNDESTROYABLE,false,true)));
+					structures.add(new Structure(coordinates[i][j], new Point(40,40), LoadImage.loadImageTranslated(image[i][j]), new TypeOfStructure(StructureType.UNDESTROYABLE,false,true)));
 				else if(typeStructures.get(i).equals("Fondo"))
-					structures.add(new Structure(coordinates[i][j], new Point(40,40), ChargerResource.loadImageTranslated(image[i][j]), new TypeOfStructure(StructureType.UNDESTROYABLE,false,false)));
+					structures.add(new Structure(coordinates[i][j], new Point(40,40), LoadImage.loadImageTranslated(image[i][j]), new TypeOfStructure(StructureType.UNDESTROYABLE,false,false)));
 				else if(typeStructures.get(i).equals("Ladrillo"))
-					structures.add(new Structure(coordinates[i][j], new Point(40,40), ChargerResource.loadImageTranslated(image[i][j]), new TypeOfStructure(StructureType.DESTROYABLE,true,true)));
+					structures.add(new Structure(coordinates[i][j], new Point(40,40), LoadImage.loadImageTranslated(image[i][j]), new TypeOfStructure(StructureType.DESTROYABLE,true,true)));
 				else
-					structures.add(new Structure(coordinates[i][j], new Point(40,40), ChargerResource.loadImageTranslated(image[i][j]), new TypeOfStructure(StructureType.UNDESTROYABLE,true, true)));
+					structures.add(new Structure(coordinates[i][j], new Point(40,40), LoadImage.loadImageTranslated(image[i][j]), new TypeOfStructure(StructureType.UNDESTROYABLE,true, true)));
 			}
 		}
 	}

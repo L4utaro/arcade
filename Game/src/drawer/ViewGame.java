@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import main.Constants;
-import util.ChargerResource;
+import util.LoadImage;
 
 public class ViewGame {		
 	//private static final long serialVersionUID = 1L;
@@ -13,7 +13,7 @@ public class ViewGame {
 	private final ImageIcon icon;
 	
 	public ViewGame(Draw draw){
-		BufferedImage image = ChargerResource.loadImageTranslated(Constants.ROUTE_ICON);
+		BufferedImage image = LoadImage.loadImageTranslated(Constants.ROUTE_ICON);
 		this.icon = new ImageIcon(image);
 		configureView(draw);
 	}

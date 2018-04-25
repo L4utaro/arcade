@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.ObjectGraphic;
-import util.ChargerResource;
+import util.ReadTextFile;
 
 public class MapTiled {
 	private String content;
@@ -16,7 +16,7 @@ public class MapTiled {
 	private String[][] images;
 	
 	public MapTiled(final String route){
-		content = ChargerResource.readTextFile(route);
+		content = ReadTextFile.readTextFile(route);
 		readerTiled = new ReaderTiled(content);
 		this.layersOfSprites = new ArrayList<LayerSprite>();
 		this.typeOfStructures = new ArrayList<>();
