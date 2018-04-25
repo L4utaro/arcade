@@ -35,17 +35,19 @@ public class PrincipalView{
 		frmPrincipalView.setBounds(100, 100, 600, 500);
 		frmPrincipalView.setResizable(false);
 		frmPrincipalView.setLocationRelativeTo(null);
+		frmPrincipalView.setBackground(Color.BLACK);
 		frmPrincipalView.setUndecorated(true);
 		frmPrincipalView.setFocusable(true);
 		principalMain = new JPanel();
 		principalMain.setBorder(new EmptyBorder(5, 5, 5, 5));
-		principalMain.setBackground(Color.lightGray);
+		principalMain.setBackground(Color.BLACK);
 		frmPrincipalView.setContentPane(principalMain);
 		principalMain.setVisible(false);
 		principalMain.setLayout(null);
 		
 		configurationPanel = new JPanel();
 		configurationPanel.setBounds(50, 50, 500, 350);
+		configurationPanel.setBackground(Color.lightGray);
 		principalMain.add(configurationPanel);
 		configurationPanel.setVisible(false);
 		configurationPanel.setLayout(null);
@@ -128,11 +130,13 @@ public class PrincipalView{
 		btnPlay.setBounds(350, 425, 111, 50);
 		principalMain.add(btnPlay);
 
-		btnConfiguration = new JButton(new ImageIcon ("(/icono/iconTankMini.png"));//new ImageIcon ("/icono/iconConfiguration")
+		btnConfiguration = new JButton("Configuration"); 
 		btnConfiguration.setBounds(150, 425, 111, 50);
+		btnConfiguration.setIcon(new ImageIcon("(/icono/iconConfiguration.png"));
 		principalMain.add(btnConfiguration);
 		
 		mapPanel = new JPanel();
+		mapPanel.setBackground(Color.darkGray);
 		mapPanel.setBounds(50, 50, 500, 350);
 		principalMain.add(mapPanel);
 		
