@@ -6,5 +6,4 @@ public class Main {
 		ControlPrincipalView main = new ControlPrincipalView();
 		main.iniciar();
 	}
-
 }

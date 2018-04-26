@@ -84,5 +84,4 @@ public class Game implements Runnable {
 	public static int getCONTADOR_FPS() {
 		return contador_fps;
 	}
-	
 }

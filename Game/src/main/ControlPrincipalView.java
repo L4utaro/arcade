@@ -20,18 +20,17 @@ public class ControlPrincipalView implements ActionListener{
 	
 	public void iniciar() {
 		this.principalView.getFrmPrincipalView().setVisible(true);		//encapsular codigo repetido
-		this.principalView.getPrincipalMain().setVisible(true);			//encapsular codigo repetido
-		this.principalView.getRdbtnTank().setSelected(true);			//encapsular codigo repetido
 	}
 	
+	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
+		//FactoryActioner
 		if (e.getSource() == this.principalView.getBtnConfiguration()) {
 			this.principalView.getConfigurationPanel().setVisible(true);
 		}
 		
 		else if (e.getSource() == this.principalView.getBtnAccept()) {
-
 			this.principalView.getConfigurationPanel().setVisible(false);
 
 			String up = this.principalView.getTextFieldUp().getText();		//encapsular codigo repetido
@@ -47,12 +46,20 @@ public class ControlPrincipalView implements ActionListener{
 		}
 		
 		else if (e.getSource() == this.principalView.getBtnPlay()) {
+			//loadMap();
 			this.principalView.getFrmPrincipalView().dispose();
 			Game game = new Game();
 			game.start();
 		}
 		
 	}
-	
+
+	private void loadMap() {
+		System.out.println("si");
+		if (this.principalView.getRdbtnBomberman().isSelected()){
+			System.out.println(this.principalView.getRdbtnBomberman().getName());
+		}
+		
+	}
 }
 

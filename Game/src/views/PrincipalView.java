@@ -45,7 +45,7 @@ public class PrincipalView{
 		principalMain.setBorder(new EmptyBorder(5, 5, 5, 5));
 		principalMain.setBackground(Color.BLACK);
 		frmPrincipalView.setContentPane(principalMain);
-		principalMain.setVisible(false);
+		principalMain.setVisible(true);
 		principalMain.setLayout(null);
 		
 		configurationPanel = new JPanel();
@@ -145,6 +145,7 @@ public class PrincipalView{
 		
 		rdbtnTank = new JRadioButton("Tank");
 		rdbtnTank.setBounds(200, 200, 250, 150);
+		rdbtnTank.setSelected(true);
 		//rdbtnTank.createImage((ImageProducer) new ImageIcon(getClass().getResource("/icono/iconTankMini.png")).getImage());
 		mapPanel.add(rdbtnTank);
 		
