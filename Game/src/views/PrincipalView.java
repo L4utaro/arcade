@@ -22,7 +22,9 @@ public class PrincipalView{
 	private JPanel mapPanel;
 	private JButton btnPlay;
 	private JButton btnConfiguration;
+	private JButton btnExit;
 	private JButton btnAccept;
+	private JButton btnCancel;
 	private JTextField textFieldUp;
 	private JTextField textFieldDown;
 	private JTextField textFieldLeft;
@@ -56,8 +58,12 @@ public class PrincipalView{
 		configurationPanel.setLayout(null);
 		
 		btnAccept = new JButton("Accept");
-		btnAccept.setBounds(210, 300, 89, 23);
+		btnAccept.setBounds(300, 300, 89, 23);
 		configurationPanel.add(btnAccept);
+		
+		btnCancel = new JButton("Cancel");
+		btnCancel.setBounds(150, 300, 89, 23);
+		configurationPanel.add(btnCancel);
 		
 		JLabel lblMovement = new JLabel("Movement player 1:");
 		lblMovement.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -137,6 +143,10 @@ public class PrincipalView{
 		btnConfiguration.setBounds(150, 425, 111, 50);
 		btnConfiguration.setIcon(new ImageIcon("(/icono/iconConfiguration.png"));
 		principalMain.add(btnConfiguration);
+		
+		btnExit = new JButton("Exit"); 
+		btnExit.setBounds(500, 30, 60, 50);
+		principalMain.add(btnExit);
 		
 		mapPanel = new JPanel();
 		mapPanel.setBackground(Color.darkGray);
